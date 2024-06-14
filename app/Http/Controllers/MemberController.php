@@ -60,7 +60,7 @@ class MemberController extends Controller
         $member = session('member');
         $riwayatBukus = $this->peminjamanBukuService->findPeminjamanByMemberId($member->member_id, [0, 1, 2]);
         $totalBukuDipinjam = $riwayatBukus->count();
-        $pemesanans = $this->pesanBukuService->findPemesanByMemberId($member->member_id);
+        $pemesanans = $this->pesanBukuService->findPemesanByMemberId($member->member_id)->get();
         $totalBukuDiambil = 0;
         $bukuDipinjam = 0;
         $bukuSelesaiDipinjam = 0;
