@@ -68,7 +68,6 @@ Route::middleware(['memberSession'])->group(function () {
     Route::put('/ganti_password', [MemberController::class, 'gantiPasswordMember'])->name('gantiPasswordMember');
     Route::post('/peminjaman', [MemberController::class, 'showPeminjaman'])->name('showPeminjamanDashboard');
     Route::post('/pemesanan', [PesanBukuController::class, 'store'])->name('pemesananBuku');
-    Route::post('/selesai-transaksi', [PesanBukuController::class, 'selesaiTransaksi'])->name('pemesananBuku.selesai');
     Route::delete('/pemesanan', [PesanBukuController::class, 'delete'])->name('pemesananBuku.delete');
 
     Route::post('/logoutMember', [MemberController::class, 'logoutMember'])->name('logoutMember');
@@ -83,6 +82,7 @@ Route::middleware(['auth'])->group(function () {
     Route::get('/cetak', [HomeController::class, 'printData'])->name('printData');
     Route::post('/verifikasi', [PesanBukuController::class, 'verifikasi'])->name('verifikasi');
     Route::post('/email_remainder', [HomeController::class, 'sentEmailRemainder'])->name('sentEmailRemainder');
+    Route::post('/selesai-transaksi', [PesanBukuController::class, 'selesaiTransaksi'])->name('pemesananBuku.selesai');
 
     // Route Ganti Password
     Route::get('/ganti-password', [UserController::class, 'showGantiPasswordForm'])->name('showGantiPassword');
