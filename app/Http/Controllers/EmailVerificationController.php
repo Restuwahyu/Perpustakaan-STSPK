@@ -17,12 +17,11 @@ class EmailVerificationController extends Controller
 
     public function verify($token)
     {
-        dd($token);
-        if ($token) {
+        $member = $this->memberService->findMemberByToken($token);
+
+        if (!$member->member_token) {
             return redirect()->route('login')->with('error', 'Token verifikasi tidak valid.');
         }
-
-        $member = $this->memberService->findMemberByToken($token);
 
         if ($member->email_verified_at) {
             return redirect()->route('login')->with('error', 'Email sudah diverifikasi sebelumnya.');
@@ -40,11 +39,11 @@ class EmailVerificationController extends Controller
 
     public function resetPassword($token)
     {
-        if ($token) {
+        $member = $this->memberService->findMemberByToken($token);
+
+        if (!$member->member_token) {
             return redirect()->route('login')->with('error', 'Token reset password tidak valid.');
         }
-
-        $member = $this->memberService->findMemberByToken($token);
 
         return view('auth.password_member', compact('member'));
     }
