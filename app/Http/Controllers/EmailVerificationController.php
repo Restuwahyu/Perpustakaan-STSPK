@@ -19,7 +19,7 @@ class EmailVerificationController extends Controller
     {
         dd($token);
         if ($token) {
-            return redirect()->route('register')->with('error', 'Token verifikasi tidak valid.');
+            return redirect()->route('login')->with('error', 'Token verifikasi tidak valid.');
         }
 
         $member = $this->memberService->findMemberByToken($token);
