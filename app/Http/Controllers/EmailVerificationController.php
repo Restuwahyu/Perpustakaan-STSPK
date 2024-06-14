@@ -17,6 +17,7 @@ class EmailVerificationController extends Controller
 
     public function verify($token)
     {
+        dd($token);
         if ($token) {
             return redirect()->route('register')->with('error', 'Token verifikasi tidak valid.');
         }
