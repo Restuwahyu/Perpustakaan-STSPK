@@ -29,7 +29,7 @@ class PesanBukuController extends Controller
     // Tampil Halaman Daftar Pesanan Buku
     public function index()
     {
-        $member_id = $request->input('member_id');
+        $member = session('member');
         $pemesanans = $this->pesanBukuService->findPemesanByMemberId($member->member_id)->get();
 
         foreach ($pemesanans as $pemesanan) {
