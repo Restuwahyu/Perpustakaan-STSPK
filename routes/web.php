@@ -177,6 +177,7 @@ Route::middleware(['auth'])->group(function () {
         Route::post('/tambah-kategori', [BukuController::class, 'storeKategori'])->name('tambahKategoriPengarang');
         Route::post('/tambah-peran', [BukuController::class, 'storePeran'])->name('tambahPeranPengarang');
         Route::post('/tambah-bahasa', [BukuController::class, 'storeBahasa'])->name('tambahBahasaBuku');
+        Route::get('/edit', [BukuController::class, 'showUpdateForm'])->name('editBuku.get');
         Route::post('/edit', [BukuController::class, 'showUpdateForm'])->name('editBuku');
         Route::put('/update', [BukuController::class, 'update'])->name('updateBuku');
         Route::post('/hapus-selected', [BukuController::class, 'deleteSelectedBukus'])->name('deleteSelectedBukus');

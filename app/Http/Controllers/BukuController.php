@@ -495,7 +495,7 @@ class BukuController extends Controller
             if ($syarat == 'edit') {
                 $buku_id = session('buku_id_edit');
 
-                return redirect()->route('editBuku.cek', ['id_buku_edit' => $buku_id])->with('success', "Tambah Pengarang");
+                return redirect()->route('editBuku.get', ['id_buku_edit' => $buku_id])->with('success', "Tambah Pengarang");
             }
             return redirect()->route('tambahBuku')->with('success', "Tambah Pengarang");
         } else {
@@ -529,7 +529,7 @@ class BukuController extends Controller
             if ($syarat == 'edit') {
                 $buku_id = session('buku_id_edit');
 
-                return redirect()->route('editBuku.cek', ['id_buku_edit' => $buku_id])->with('success', "Tambah Penerbit");
+                return redirect()->route('editBuku.get', ['id_buku_edit' => $buku_id])->with('success', "Tambah Penerbit");
             }
             return redirect()->route('tambahBuku')->with('success', "Tambah Penerbit");
         } else {
@@ -562,7 +562,7 @@ class BukuController extends Controller
             if ($syarat == 'edit') {
                 $buku_id = session('buku_id_edit');
 
-                return redirect()->route('editBuku.cek', ['id_buku_edit' => $buku_id])->with('success', "Tambah Kategori Pengarang");
+                return redirect()->route('editBuku.get', ['id_buku_edit' => $buku_id])->with('success', "Tambah Kategori Pengarang");
             }
             return redirect()->route('tambahBuku')->with('success', "Tambah Kategori Pengarang");
         } else {
@@ -596,7 +596,7 @@ class BukuController extends Controller
             if ($syarat == 'edit') {
                 $buku_id = session('buku_id_edit');
 
-                return redirect()->route('editBuku.cek', ['id_buku_edit' => $buku_id])->with('success', "Tambah Peran Pengarang");
+                return redirect()->route('editBuku.get', ['id_buku_edit' => $buku_id])->with('success', "Tambah Peran Pengarang");
             }
             return redirect()->route('tambahBuku')->with('success', "Tambah Peran Pengarang");
         } else {
@@ -629,7 +629,7 @@ class BukuController extends Controller
             if ($syarat == 'edit') {
                 $buku_id = session('buku_id_edit');
 
-                return redirect()->route('editBuku.cek', ['id_buku_edit' => $buku_id])->with('success', "Tambah Bahasa");
+                return redirect()->route('editBuku.get', ['id_buku_edit' => $buku_id])->with('success', "Tambah Bahasa");
             }
             return redirect()->route('tambahBuku')->with('success', "Tambah Bahasa");
         } else {
@@ -664,7 +664,7 @@ class BukuController extends Controller
         if ($syarat == 'edit') {
             $buku_id = session('buku_id_edit');
 
-            return redirect()->route('editBuku.cek', ['id_buku_edit' => $buku_id])->with('success', "Tambah Klasifikasi");
+            return redirect()->route('editBuku.get', ['id_buku_edit' => $buku_id])->with('success', "Tambah Klasifikasi");
         }
 
         return redirect()->route('tambahBuku')->with('success', "Tambah Klasifikasi");
@@ -693,7 +693,7 @@ class BukuController extends Controller
         if ($syarat == 'edit') {
             $buku_id = session('buku_id_edit');
 
-            return redirect()->route('editBuku.cek', ['id_buku_edit' => $buku_id])->with('success', "Tambah Subyek");
+            return redirect()->route('editBuku.get', ['id_buku_edit' => $buku_id])->with('success', "Tambah Subyek");
         }
         return redirect()->route('tambahBuku')->with('success', "Tambah Subyek");
     }
