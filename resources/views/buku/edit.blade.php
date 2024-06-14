@@ -678,6 +678,45 @@
 </div>
 <!-- content -->
 
+<!-- Modal Tambah Role -->
+<div class="modal fade" id="tambahRoleModal" tabindex="-1" role="dialog" aria-labelledby="tambahRoleModalLabel"
+    aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="tambahRoleModalLabel">Tambah Role
+                </h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <form action="{{ route('tambahRole') }}" method="POST">
+                    @csrf
+                    @method('POST')
+                    <div class="form-group">
+                        <label>Nama Role
+                            @error('role_nama')
+                                <span class="text-danger">({{ $message }})</span>
+                            @enderror
+                        </label>
+                        <input type="text" name="role_nama"
+                            class="form-control @error('role_nama') is-invalid @enderror" id="nama"
+                            id="nama" value="{{ old('role_nama') }}" required>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-danger" data-dismiss="modal">Batal</button>
+
+                        <input type="hidden" name="allowed" value="1">
+
+                        <button type="submit" class="btn btn-success" id="simpanRoleBtn">Simpan</button>
+                    </div><!-- /.modal-footer -->
+                </form>
+            </div><!-- /.modal-body -->
+        </div><!-- /.modal-content -->
+    </div><!-- /.modal-dialog -->
+</div><!-- /.modal -->
+
 <!-- Modal Tambah Pengarang -->
 <div class="modal fade" id="tambahPengarangModal" tabindex="-1" role="dialog"
     aria-labelledby="tambahPengarangModalLabel" aria-hidden="true">
@@ -695,17 +734,12 @@
                 <div class="mb-3">
                     <button type="button" class="btn btn-sm btn-primary ml-2" data-toggle="modal"
                         data-target="#tambahKategoriModal">
-                        <i class="fas fa-plus"></i> Tambah Pengarang Kategori
-                    </button>
-
-                    <button type="button" class="btn btn-sm btn-primary ml-2" data-toggle="modal"
-                        data-target="#tambahPeranModal">
-                        <i class="fas fa-plus"></i> Tambah Pengarang Peran
+                        <i class="fas fa-plus"></i> Kategori Pengarang
                     </button>
                 </div>
 
 
-                <form action="{{ route('tambahPengarang') }}" method="POST">
+                <form action="{{ route('tambahPengarangBuku') }}" method="POST">
                     @csrf
                     @method('POST')
                     <div class="form-group">
@@ -735,25 +769,10 @@
                         @enderror
                     </div>
 
-                    <div class="form-group">
-                        <label>Peran Pengarang</label>
-                        <select name="pengarang_peran" class="form-control select2" id="pengarang_peran"
-                            value="{{ old('pengarang_peran') }}"required>
-                            <option value="" selected="selected" disabled>Pilih
-                                Peran Pengarang</option>
-                            @foreach ($pengarang_peran as $peran)
-                                <option value="{{ $peran->peran_id }}">
-                                    {{ $peran->peran_nama }}
-                                </option>
-                            @endforeach
-                        </select>
-                        @error('pengarang_peran')
-                            <span class="text-danger">{{ $message }}</span>
-                        @enderror
-                    </div>
                     <div class="modal-footer">
-                        <button class="btn btn-danger ml-auto mr-2" data-dismiss="modal">Batal</button>
-
+                        <button class="btn btn-danger ml-auto mr-2" data-dismiss="modal">Batal
+                        </button>
+                        <input type="hidden" name="syarat" value="edit">
                         <button type="submit" class="btn btn-success"data-toggle="modal" style="color: white">Tambah
                         </button>
                     </div><!-- /.modal-footer -->
@@ -776,7 +795,7 @@
                 </button>
             </div>
             <div class="modal-body">
-                <form action="{{ route('tambahPenerbit') }}" method="POST">
+                <form action="{{ route('tambahPenerbitBuku') }}" method="POST">
                     @csrf
                     @method('POST')
                     <div class="form-group">
@@ -789,7 +808,7 @@
                     </div>
                     <div class="modal-footer">
                         <button type="button" class="btn btn-danger" data-dismiss="modal">Batal</button>
-
+                        <input type="hidden" name="syarat" value="edit">
                         <button type="submit" class="btn btn-success" id="simpanPenerbitBtn">Tambah</button>
                     </div><!-- /.modal-footer -->
                 </form>
@@ -811,7 +830,7 @@
                 </button>
             </div>
             <div class="modal-body">
-                <form action="{{ route('tambahKategori') }}" method="POST">
+                <form action="{{ route('tambahKategoriPengarang') }}" method="POST">
                     @csrf
                     @method('POST')
                     <div class="form-group">
@@ -824,7 +843,7 @@
                     </div>
                     <div class="modal-footer">
                         <button type="button" class="btn btn-danger" data-dismiss="modal">Batal</button>
-
+                        <input type="hidden" name="syarat" value="edit">
                         <button type="submit" class="btn btn-success" id="simpanKategoriBtn">Simpan</button>
                     </div><!-- /.modal-footer -->
                 </form>
@@ -846,7 +865,7 @@
                 </button>
             </div>
             <div class="modal-body">
-                <form action="{{ route('tambahPeran') }}" method="POST">
+                <form action="{{ route('tambahPeranPengarang') }}" method="POST">
                     @csrf
                     @method('POST')
                     <div class="form-group">
@@ -859,8 +878,122 @@
                     </div>
                     <div class="modal-footer">
                         <button type="button" class="btn btn-danger" data-dismiss="modal">Batal</button>
-
+                        <input type="hidden" name="syarat" value="edit">
                         <button type="submit" class="btn btn-success" id="simpanPeranBtn">Simpan</button>
+                    </div><!-- /.modal-footer -->
+                </form>
+            </div><!-- /.modal-body -->
+        </div><!-- /.modal-content -->
+    </div><!-- /.modal-dialog -->
+</div><!-- /.modal -->
+
+<!-- Modal Tambah Klasifikasi -->
+<div class="modal fade" id="tambahKlasifikasiModal" tabindex="-1" role="dialog"
+    aria-labelledby="tambahKlasifikasiModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="tambahKlasifikasiModalLabel">Tambah Klasifikasi
+                </h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <form action="{{ route('tambahKlasifikasiBuku') }}" method="POST">
+                    @csrf
+                    @method('POST')
+                    <div class="form-group">
+                        <label>Kode Klasifikasi</label>
+                        <input type="text" name="klasifikasi_kode" class="form-control" id="id"
+                            value="{{ old('klasifikasi_kode') }}" required>
+                        @error('klasifikasi_kode')
+                            <span class="text-danger">{{ $message }}</span>
+                        @enderror
+                    </div>
+
+                    <div class="form-group">
+                        <label>Nama Klasifikasi</label>
+                        <input type="text" name="klasifikasi_nama" class="form-control" id="nama"
+                            value="{{ old('klasifikasi_nama') }}" required>
+                        @error('klasifikasi_nama')
+                            <span class="text-danger">{{ $message }}</span>
+                        @enderror
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-danger" data-dismiss="modal">Batal</button>
+                        <input type="hidden" name="syarat" value="edit">
+                        <button type="submit" class="btn btn-success" id="simpanKlasifikasiBtn">Tambah</button>
+                    </div><!-- /.modal-footer -->
+                </form>
+            </div><!-- /.modal-body -->
+        </div><!-- /.modal-content -->
+    </div><!-- /.modal-dialog -->
+</div><!-- /.modal -->
+
+<!-- Modal Tambah Subyek -->
+<div class="modal fade" id="tambahSubyekModal" tabindex="-1" role="dialog"
+    aria-labelledby="tambahSubyekModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="tambahSubyekModalLabel">Tambah Subyek
+                </h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <form action="{{ route('tambahSubyekBuku') }}" method="POST">
+                    @csrf
+                    @method('POST')
+                    <div class="form-group">
+                        <label>Nama Subyek</label>
+                        <input type="text" name="subyek_nama" class="form-control" id="nama" id="nama"
+                            value="{{ old('subyek_nama') }}" required>
+                        @error('subyek_nama')
+                            <span class="text-danger">{{ $message }}</span>
+                        @enderror
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-danger" data-dismiss="modal">Batal</button>
+                        <input type="hidden" name="syarat" value="edit">
+                        <button type="submit" class="btn btn-success" id="simpanKlasifikasiBtn">Tambah</button>
+                    </div><!-- /.modal-footer -->
+                </form>
+            </div><!-- /.modal-body -->
+        </div><!-- /.modal-content -->
+    </div><!-- /.modal-dialog -->
+</div><!-- /.modal -->
+
+<!-- Modal Tambah Bahasa -->
+<div class="modal fade" id="tambahBahasaModal" tabindex="-1" role="dialog"
+    aria-labelledby="tambahBahasaModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="tambahBahasaModalLabel">Tambah Bahasa
+                </h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <form action="{{ route('tambahBahasaBuku') }}" method="POST">
+                    @csrf
+                    @method('POST')
+                    <div class="form-group">
+                        <label>Nama Bahasa</label>
+                        <input type="text" name="bahasa_nama" class="form-control" id="nama" id="nama"
+                            value="{{ old('bahasa_nama') }}" required>
+                        @error('bahasa_nama')
+                            <span class="text-danger">{{ $message }}</span>
+                        @enderror
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-danger" data-dismiss="modal">Batal</button>
+                        <input type="hidden" name="syarat" value="edit">
+                        <button type="submit" class="btn btn-success" id="simpanBahasaBtn">Tambah</button>
                     </div><!-- /.modal-footer -->
                 </form>
             </div><!-- /.modal-body -->

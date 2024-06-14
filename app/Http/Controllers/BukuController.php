@@ -491,6 +491,12 @@ class BukuController extends Controller
         $simpan = $this->pengarangService->add($data);
 
         if ($simpan) {
+            $syarat = $request->syarat;
+            if ($syarat == 'edit') {
+                $buku_id = session('buku_id_edit');
+
+                return redirect()->route('editBuku.cek', ['id_buku_edit' => $buku_id])->with('success', "Tambah Pengarang");
+            }
             return redirect()->route('tambahBuku')->with('success', "Tambah Pengarang");
         } else {
             return redirect()->route('tambahBuku')->with('error', "Tambah Pengarang");
@@ -519,6 +525,12 @@ class BukuController extends Controller
         $simpan = $this->penerbitService->add($data);
 
         if ($simpan) {
+            $syarat = $request->syarat;
+            if ($syarat == 'edit') {
+                $buku_id = session('buku_id_edit');
+
+                return redirect()->route('editBuku.cek', ['id_buku_edit' => $buku_id])->with('success', "Tambah Penerbit");
+            }
             return redirect()->route('tambahBuku')->with('success', "Tambah Penerbit");
         } else {
             return redirect()->route('tambahBuku')->with('error', "Tambah Penerbit");
@@ -546,6 +558,12 @@ class BukuController extends Controller
         $simpan = $this->kategoriService->add($data);
 
         if ($simpan) {
+            $syarat = $request->syarat;
+            if ($syarat == 'edit') {
+                $buku_id = session('buku_id_edit');
+
+                return redirect()->route('editBuku.cek', ['id_buku_edit' => $buku_id])->with('success', "Tambah Kategori Pengarang");
+            }
             return redirect()->route('tambahBuku')->with('success', "Tambah Kategori Pengarang");
         } else {
             return redirect()->route('tambahBuku')->with('error', "Tambah Kategori Pengarang");
@@ -574,6 +592,12 @@ class BukuController extends Controller
         $simpan = $this->peranService->add($data);
 
         if ($simpan) {
+            $syarat = $request->syarat;
+            if ($syarat == 'edit') {
+                $buku_id = session('buku_id_edit');
+
+                return redirect()->route('editBuku.cek', ['id_buku_edit' => $buku_id])->with('success', "Tambah Peran Pengarang");
+            }
             return redirect()->route('tambahBuku')->with('success', "Tambah Peran Pengarang");
         } else {
             return redirect()->route('tambahBuku')->with('error', "Tambah Peran Pengarang");
@@ -601,6 +625,12 @@ class BukuController extends Controller
         $simpan = $this->bahasaService->add($data);
 
         if ($simpan) {
+            $syarat = $request->syarat;
+            if ($syarat == 'edit') {
+                $buku_id = session('buku_id_edit');
+
+                return redirect()->route('editBuku.cek', ['id_buku_edit' => $buku_id])->with('success', "Tambah Bahasa");
+            }
             return redirect()->route('tambahBuku')->with('success', "Tambah Bahasa");
         } else {
             return redirect()->route('tambahBuku')->with('error', "Tambah Bahasa");
@@ -630,6 +660,12 @@ class BukuController extends Controller
         ];
 
         $simpan = $this->klasifikasiService->add($data);
+        $syarat = $request->syarat;
+        if ($syarat == 'edit') {
+            $buku_id = session('buku_id_edit');
+
+            return redirect()->route('editBuku.cek', ['id_buku_edit' => $buku_id])->with('success', "Tambah Klasifikasi");
+        }
 
         return redirect()->route('tambahBuku')->with('success', "Tambah Klasifikasi");
     }
@@ -653,7 +689,12 @@ class BukuController extends Controller
         ];
 
         $simpan = $this->subyekService->add($data);
+        $syarat = $request->syarat;
+        if ($syarat == 'edit') {
+            $buku_id = session('buku_id_edit');
 
+            return redirect()->route('editBuku.cek', ['id_buku_edit' => $buku_id])->with('success', "Tambah Subyek");
+        }
         return redirect()->route('tambahBuku')->with('success', "Tambah Subyek");
     }
 
@@ -663,8 +704,9 @@ class BukuController extends Controller
         if (!Auth::check()) {
             return redirect()->route('login');
         }
-
         $buku_id = $request->input('id_buku_edit');
+
+        // dd($request->all(), $buku_id);
         session(['buku_id_edit' => $buku_id]);
 
         $all = $this->bukuPengarangPeranService->findByBukuId($buku_id);
