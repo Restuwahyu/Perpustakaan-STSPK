@@ -38,4 +38,12 @@ class PesanBukuService implements PerpustakaanInterface
     {
         return PesanBuku::find($id);
     }
+
+    // MENCARI PEMESANAN BUKU BY ID MEMBER
+    public function findPemesanByMemberId($member_id)
+    {
+        $query = PesanBuku::with(['members', 'eksemplars'])->where('pemesanan_buku_member', $member_id);
+
+        return $query;
+    }
 }
