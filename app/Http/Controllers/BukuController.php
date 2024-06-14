@@ -476,10 +476,16 @@ class BukuController extends Controller
         }
         $pengarang_nama = $request->pengarang_nama;
         $pengarang_kategori = $request->pengarang_kategori;
+        $syarat = $request->syarat;
 
         $existingPengarang = $this->pengarangService->findByNameCategory($pengarang_nama, $pengarang_kategori);
 
         if ($existingPengarang) {
+            if ($syarat == 'edit') {
+                $buku_id = session('buku_id_edit');
+
+                return redirect()->route('editBuku.get', ['id_buku_edit' => $buku_id])->with('error', "Pengarang Sudah Ada.");
+            }
             return redirect()->route('tambahBuku')->with('error', "Pengarang Sudah Ada.");
         }
 
@@ -491,7 +497,6 @@ class BukuController extends Controller
         $simpan = $this->pengarangService->add($data);
 
         if ($simpan) {
-            $syarat = $request->syarat;
             if ($syarat == 'edit') {
                 $buku_id = session('buku_id_edit');
 
@@ -511,10 +516,16 @@ class BukuController extends Controller
         }
 
         $penerbit_nama = $request->penerbit_nama;
+        $syarat = $request->syarat;
 
         $existingPenerbit = $this->penerbitService->findByName($penerbit_nama);
 
         if ($existingPenerbit) {
+            if ($syarat == 'edit') {
+                $buku_id = session('buku_id_edit');
+
+                return redirect()->route('editBuku.get', ['id_buku_edit' => $buku_id])->with('error', "Penerbit Sudah Ada.");
+            }
             return redirect()->route('tambahBuku')->with('error', "Penerbit Sudah Ada.");
         }
 
@@ -525,7 +536,6 @@ class BukuController extends Controller
         $simpan = $this->penerbitService->add($data);
 
         if ($simpan) {
-            $syarat = $request->syarat;
             if ($syarat == 'edit') {
                 $buku_id = session('buku_id_edit');
 
@@ -546,8 +556,14 @@ class BukuController extends Controller
 
         $kategori_nama = $request->kategori_nama;
         $existingKategori = $this->kategoriService->findByName($kategori_nama);
+        $syarat = $request->syarat;
 
         if ($existingKategori) {
+            if ($syarat == 'edit') {
+                $buku_id = session('buku_id_edit');
+
+                return redirect()->route('editBuku.get', ['id_buku_edit' => $buku_id])->with('error', "Kategori Pengarang Sudah Ada.");
+            }
             return redirect()->route('tambahBuku')->with('error', "Kategori Pengarang Sudah Ada.");
         }
 
@@ -558,7 +574,6 @@ class BukuController extends Controller
         $simpan = $this->kategoriService->add($data);
 
         if ($simpan) {
-            $syarat = $request->syarat;
             if ($syarat == 'edit') {
                 $buku_id = session('buku_id_edit');
 
@@ -578,10 +593,16 @@ class BukuController extends Controller
         }
 
         $peran_nama = $request->peran_nama;
+        $syarat = $request->syarat;
 
         $existingPeran = $this->peranService->findByName($peran_nama);
 
         if ($existingPeran) {
+            if ($syarat == 'edit') {
+                $buku_id = session('buku_id_edit');
+
+                return redirect()->route('editBuku.get', ['id_buku_edit' => $buku_id])->with('error', "Peran Pengarang Sudah Ada.");
+            }
             return redirect()->route('tambahBuku')->with('error', "Peran Pengarang Sudah Ada.");
         }
 
@@ -592,7 +613,6 @@ class BukuController extends Controller
         $simpan = $this->peranService->add($data);
 
         if ($simpan) {
-            $syarat = $request->syarat;
             if ($syarat == 'edit') {
                 $buku_id = session('buku_id_edit');
 
@@ -612,9 +632,16 @@ class BukuController extends Controller
         }
 
         $bahasa_nama = $request->bahasa_nama;
+        $syarat = $request->syarat;
+
         $existingBahasa = $this->bahasaService->findByName($bahasa_nama);
 
         if ($existingBahasa) {
+            if ($syarat == 'edit') {
+                $buku_id = session('buku_id_edit');
+
+                return redirect()->route('editBuku.get', ['id_buku_edit' => $buku_id])->with('error', "Bahasa Sudah Ada.");
+            }
             return redirect()->route('tambahBuku')->with('error', "Bahasa Sudah Ada.");
         }
 
@@ -625,7 +652,6 @@ class BukuController extends Controller
         $simpan = $this->bahasaService->add($data);
 
         if ($simpan) {
-            $syarat = $request->syarat;
             if ($syarat == 'edit') {
                 $buku_id = session('buku_id_edit');
 
@@ -646,11 +672,17 @@ class BukuController extends Controller
 
         $klasifikasi_nama = $request->klasifikasi_nama;
         $klasifikasi_kode = $request->klasifikasi_kode;
+        $syarat = $request->syarat;
 
         $existingKlasifikasiName = $this->klasifikasiService->findByName($klasifikasi_nama);
         $existingKlasifikasiKode = $this->klasifikasiService->findByKode($klasifikasi_kode);
 
         if ($existingKlasifikasiName || $existingKlasifikasiKode) {
+            if ($syarat == 'edit') {
+                $buku_id = session('buku_id_edit');
+
+                return redirect()->route('editBuku.get', ['id_buku_edit' => $buku_id])->with('error', "Klasifikasi Sudah Ada.");
+            }
             return redirect()->route('tambahBuku')->with('error', "Klasifikasi Sudah Ada.");
         }
 
@@ -660,7 +692,7 @@ class BukuController extends Controller
         ];
 
         $simpan = $this->klasifikasiService->add($data);
-        $syarat = $request->syarat;
+
         if ($syarat == 'edit') {
             $buku_id = session('buku_id_edit');
 
@@ -678,9 +710,16 @@ class BukuController extends Controller
         }
 
         $subyek_nama = $request->subyek_nama;
+        $syarat = $request->syarat;
+
         $existingSubyek = $this->subyekService->findByName($subyek_nama);
 
         if ($existingSubyek) {
+            if ($syarat == 'edit') {
+                $buku_id = session('buku_id_edit');
+
+                return redirect()->route('editBuku.get', ['id_buku_edit' => $buku_id])->with('error', "Subyek Sudah Ada.");
+            }
             return redirect()->route('tambahBuku')->with('error', "Subyek Sudah Ada.");
         }
 
@@ -689,7 +728,6 @@ class BukuController extends Controller
         ];
 
         $simpan = $this->subyekService->add($data);
-        $syarat = $request->syarat;
         if ($syarat == 'edit') {
             $buku_id = session('buku_id_edit');
 
