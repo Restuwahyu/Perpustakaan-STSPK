@@ -77,7 +77,7 @@
 <body>
     <div class="container">
         <div class="logo">
-            {{-- <img src="https://pustaka.stpaulus.id/Zegva/Zegva_v1.0.0/Admin/vertical/assets/images/Logodark.png"> --}}
+            <img src="https://lojvino.sga.dom.my.id/Zegva/Zegva_v1.0.0/Admin/vertical/assets/images/Logodark.png">
         </div>
 
         <h1>Verifikasi Email <br> Perpustakaan Seminari Tinggi St. Paulus Kentungan</h1>

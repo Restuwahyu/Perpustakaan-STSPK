@@ -504,7 +504,7 @@
                                             <div class="row align-items-center">
                                                 <div class="col-12 col-md-2 mb-3 mb-md-0">
                                                     <img id="previewImage"
-                                                        src="{{ asset('storage/images/preview.png') }}"
+                                                        src="{{ asset('storage/public/images/preview.png') }}"
                                                         alt="Preview Image" class="img-fluid"
                                                         style="width: auto; height: auto; border-radius: 5px;">
                                                 </div>

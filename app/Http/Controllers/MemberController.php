@@ -60,7 +60,7 @@ class MemberController extends Controller
         $member = session('member');
         $riwayatBukus = $this->peminjamanBukuService->findPeminjamanByMemberId($member->member_id, [0, 1, 2]);
         $totalBukuDipinjam = $riwayatBukus->count();
-        $pemesanans = $this->pesanBukuService->findAll('pemesanan_buku_id', 'ASC')->get();
+        $pemesanans = $this->pesanBukuService->findPemesanByMemberId($member->member_id)->get();
         $totalBukuDiambil = 0;
         $bukuDipinjam = 0;
         $bukuSelesaiDipinjam = 0;
@@ -194,6 +194,7 @@ class MemberController extends Controller
                 $member_status = 1;
                 $generate_password = date('dmY', strtotime($request->member_tanggal_lahir));
                 $email_verifed = Carbon::now();
+                $verificationToken = null;
             }
 
             $member_nama = $request->member_nama;
@@ -226,10 +227,11 @@ class MemberController extends Controller
                 'member_tanggal_kedaluwarsa' => $member_tanggal_kedaluwarsa,
                 'member_status' => $member_status,
                 'member_email_verified_at' => $email_verifed,
-                'member_token' => null,
+                'member_token' => $verificationToken,
             ];
 
             $simpan = $this->memberService->add($data);
+
             if ($registerValue == 1) {
                 $this->memberService->sendEmail($simpan->member_email, $simpan->member_nama, $verificationToken, '-', 'register');
 
