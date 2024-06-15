@@ -93,36 +93,38 @@
                             @endif
 
                             <!-- Modal -->
-                            <form id="submitForm-{{ $eksemplar->eksemplar_id }}" action="{{ route('pemesananBuku') }}"
-                                method="POST">
-                                @csrf
-                                <div class="modal" id="pemesananModal-{{ $eksemplar->eksemplar_id }}" tabindex="-1"
-                                    role="dialog" aria-labelledby="pemesananModalLabel" aria-hidden="true">
-                                    <div class="modal-dialog modal-dialog-centered" role="document">
-                                        <div class="modal-content">
-                                            <div class="modal-header">
-                                                <h5 class="modal-title"
-                                                    id="pemesananModalLabel-{{ $eksemplar->eksemplar_id }}">Formulir
-                                                    Pemesanan Buku
-                                                </h5>
-                                                <button type="button" class="close" data-dismiss="modal"
-                                                    aria-label="Close">
-                                                    <span aria-hidden="true">&times;</span>
-                                                </button>
-                                            </div>
+                            <div class="modal" id="pemesananModal-{{ $eksemplar->eksemplar_id }}" tabindex="-1"
+                                role="dialog" aria-labelledby="pemesananModalLabel" aria-hidden="true">
+                                <div class="modal-dialog modal-dialog-centered" role="document">
+                                    <div class="modal-content">
+                                        <div class="modal-header">
+                                            <h5 class="modal-title"
+                                                id="pemesananModalLabel-{{ $eksemplar->eksemplar_id }}">Formulir
+                                                Pemesanan Buku
+                                            </h5>
+                                            <button type="button" class="close" data-dismiss="modal"
+                                                aria-label="Close">
+                                                <span aria-hidden="true">&times;</span>
+                                            </button>
+                                        </div>
+                                        <form id="submitForm-{{ $eksemplar->eksemplar_id }}"
+                                            action="{{ route('pemesananBuku') }}" method="POST">
+                                            @csrf
                                             <div class="modal-body">
-                                                {{-- <form id="tanggalForm"> --}}
                                                 <div class="form-group">
-                                                    <label for="tanggalPemesanan">Tanggal Pemesanan</label>
+                                                    <label for="tanggalPemesanan">Tanggal Pemesanan<span
+                                                            class="text-danger"
+                                                            id="errorTanggalPemesanan"></span></label>
                                                     <input type="date" class="form-control" id="tanggalPemesanan"
                                                         name="tanggal_pemesanan" required>
                                                 </div>
                                                 <div class="form-group">
-                                                    <label for="tanggalPengambilan">Tanggal Pengambilan Buku</label>
+                                                    <label for="tanggalPengambilan">Tanggal Pengambilan Buku<span
+                                                            class="text-danger"
+                                                            id="errorTanggalPengambilan"></span></label>
                                                     <input type="date" class="form-control" id="tanggalPengambilan"
                                                         name="tanggal_pengambilan" required>
                                                 </div>
-                                                {{-- </form> --}}
                                             </div>
 
                                             <div class="modal-footer">
@@ -133,10 +135,10 @@
                                                 <button type="submit" class="btn btn-success" id="pesanBukuBtn">Pesan
                                                     Buku</button>
                                             </div>
-                                        </div>
+                                        </form>
                                     </div>
                                 </div>
-                            </form>
+                            </div>
                         </td>
                     </tr>
                 @endforeach
@@ -209,8 +211,43 @@
 <hr>
 
 <script>
+    $(document).ready(function() {
+        $('#submitForm-{{ $eksemplar->eksemplar_id }}').on('submit', function(event) {
+            console.log('Form submitted'); // Debugging
+
+
+        });
+    });
+
     document.getElementById("pesanBukuBtn").addEventListener("click", function() {
         event.preventDefault();
+
+        const form = document.getElementById("submitForm-{{ $eksemplar->eksemplar_id }}");
+        const tanggalPemesanan = document.getElementById("tanggalPemesanan");
+        const tanggalPengambilan = document.getElementById("tanggalPengambilan");
+
+        const errorTanggalPemesanan = document.getElementById("errorTanggalPemesanan");
+        const errorTanggalPengambilan = document.getElementById("errorTanggalPengambilan");
+
+        let isValid = true;
+
+        errorTanggalPemesanan.textContent = "";
+        errorTanggalPengambilan.textContent = "";
+
+        if (!tanggalPemesanan.value) {
+            errorTanggalPemesanan.textContent = " (Tanggal Pemesanan harus diisi)";
+            isValid = false;
+        }
+
+        if (!tanggalPengambilan.value) {
+            errorTanggalPengambilan.textContent = " (Tanggal Pengambilan harus diisi)";
+            isValid = false;
+        }
+
+        if (!isValid) {
+            return;
+        }
+
         const swalWithBootstrapButtons = Swal.mixin({
             customClass: {
                 confirmButton: "btn btn-success mr-2",
@@ -238,8 +275,6 @@
             console.log(eksemplarId);
 
             document.getElementById("submitForm-" + eksemplarId).submit();
-            // document.getElementById("submitForm-" + eksemplarId).querySelector(
-            //     "button[type='button']").setAttribute("type", "submit");
         @endif
     });
 </script>

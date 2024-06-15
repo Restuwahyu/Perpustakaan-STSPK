@@ -39,7 +39,6 @@ use Illuminate\Support\Facades\Route;
 
 // Halaman Member
 Route::get('/', [BukuController::class, 'showListBuku'])->name('showListBuku');
-// Route::get('/detail', [BukuController::class, 'showListBukuDetail'])->name('showListBukuDetail');
 Route::post('/detail', [BukuController::class, 'showListBukuDetail'])->name('showListBukuDetail');
 Route::get('/search', [BukuController::class, 'searchBuku'])->name('searchBuku');
 Route::match(['get', 'post'], '/chatbot', [ChatBotController::class, 'handle']);
