@@ -104,7 +104,7 @@
                                     <div class="col-12">
                                         <div class="float-left">
                                             <a href="{{ route('forgot') }}" class="text-muted"><i
-                                                    class="fa fa-lock mr-1"></i> Lupa kata sandi Anda?</a>
+                                                    class="fa fa-lock mr-1"></i> Lupa Password Anda?</a>
                                         </div>
                                         <div class="text-right">
                                             <a href="{{ route('register') }}" class="text-muted">Daftar</a>
