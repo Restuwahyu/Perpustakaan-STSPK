@@ -119,7 +119,7 @@
                                                         name="tanggal_pemesanan" required>
                                                 </div>
                                                 <div class="form-group">
-                                                    <label for="tanggalPengambilan">Tanggal Pengambilan Buku<span
+                                                    <label for="tanggalPengambilan">Tanggal Pengambilan<span
                                                             class="text-danger"
                                                             id="errorTanggalPengambilan"></span></label>
                                                     <input type="date" class="form-control" id="tanggalPengambilan"
