@@ -324,7 +324,7 @@ class MemberController extends Controller
 
         // Cek Password Lama
         if ($newPassword != $passwordConfirmation && $type == 'ganti_password') {
-            return redirect()->back()->with('error', 'Password Baru dan Konfirmasi Berbeda');
+            return redirect()->back()->with('error', 'Password Baru dan Konfirmasi Password Berbeda');
         } else if (!Hash::check($currentPassword, $member->member_password) && !$type == 'ganti_password') {
             return redirect()->route('showGantiPasswordMember')->with('error', 'Password Lama Salah');
         } else if ($newPassword != $passwordConfirmation && !$type == 'ganti_password') {

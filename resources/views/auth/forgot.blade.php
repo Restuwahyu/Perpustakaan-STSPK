@@ -41,7 +41,7 @@
                                 @csrf
                                 @method('POST')
                                 <div class="col-12 text-center mt-4">
-                                    <h4>Lupa Kata Sandi Anda?</h4>
+                                    <h4>Lupa Password Anda?</h4>
                                 </div>
 
                                 <div class="form-group text-center">
