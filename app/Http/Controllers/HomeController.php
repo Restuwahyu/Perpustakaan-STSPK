@@ -52,13 +52,9 @@ class HomeController extends Controller
         $today = now();
 
         $pengembalian_buku = $peminjamans->filter(function ($peminjaman) use ($today) {
-            // dd($peminjaman);
             $tglKembali = Carbon::parse($peminjaman->peminjaman_tgl_kembali);
-            $daysRemaining = $today->diffInDays($tglKembali, false) + 1;
+            $daysRemaining = $today->diffInDays($tglKembali, false);
             $member = $this->memberService->findById($peminjaman->peminjaman_member);
-            // if ($peminjaman->peminjaman_status == 1 && $tglKembali->isSameDay($today) && ) {
-
-            // }
 
             if ($peminjaman->peminjaman_status == 1) {
                 if ($tglKembali->isSameDay($today)) {
@@ -72,7 +68,7 @@ class HomeController extends Controller
                     $peminjaman->status_kembali = 'Peminjaman Buku Habis dalam ' . $daysRemaining . ' hari';
                 } elseif ($daysRemaining <= 1) {
                     $peminjaman->status_kembali = 'Harus Dikembalikan Hari Ini';
-                    $peminjaman->daysRemaining = $daysRemaining - 1;
+                    $peminjaman->daysRemaining = $daysRemaining + 1;
                 }
             }
 
