@@ -321,7 +321,8 @@
                                     <tr>
                                         <td style="cursor: pointer" data-toggle="modal"
                                             data-target="#memberModal{{ $buku->member->member_id }}">
-                                            {{ $buku->member->member_nama }}
+                                            {{-- {{ $buku->member->member_nama }} --}}
+                                            {{ $buku->daysRemaining }}
                                         </td>
                                         <td style="cursor: pointer" data-toggle="modal"
                                             data-target="#memberModal{{ $buku->member->member_id }}">
