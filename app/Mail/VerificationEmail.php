@@ -17,7 +17,6 @@ class VerificationEmail extends Mailable
 
     public function __construct($namaMember, $verificationToken, $judulBuku, $type)
     {
-        dd($namaMember, $verificationToken, $judulBuku, $type);
         $this->namaMember = $namaMember;
         $this->verificationToken = $verificationToken;
         $this->judulBuku = $judulBuku;
