@@ -28,7 +28,7 @@ class VerificationEmail extends Mailable
         if ($this->type === 'reset_password') {
             return $this->view('member.mail.reset_password_email')
                 ->subject('Reset Password');
-        } elseif ($this->type === 'register') {
+        } elseif ($this->type === 'reminder') {
             return $this->view('member.mail.verification_email')
                 ->subject('Verifikasi Email');
         } elseif ($this->type === 'reminder') {
