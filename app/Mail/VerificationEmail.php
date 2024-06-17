@@ -12,6 +12,7 @@ class VerificationEmail extends Mailable
 
     public $namaMember;
     public $verificationToken;
+    public $peminjaman;
     public $type;
 
     public function __construct($namaMember, $verificationToken, $peminjaman, $type)
@@ -32,11 +33,7 @@ class VerificationEmail extends Mailable
                 ->subject('Verifikasi Email');
         } elseif ($this->type === 'reminder') {
             return $this->view('member.mail.reminder_email')
-                ->subject('Pengembalian Buku')
-                ->with([
-                    'namaMember' => $this->namaMember,
-                    'peminjaman' => $this->peminjaman,
-                ]);
+                ->subject('Pengembalian Buku');
         }
     }
 }
