@@ -44,7 +44,7 @@
                             @csrf
                             <div class="row align-items-center">
                                 <div class="col-3 col-md-4">
-                                    <label for="member_kode" class="form-label text-md-end">ID Anggota</label>
+                                    <label for="member_kode" class="form-label text-md-end">ID Member</label>
                                 </div>
                                 <div class="col-6 col-md-5">
                                     <input type="text" class="form-control" id="member_kode" name="member_kode"
