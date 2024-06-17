@@ -26,18 +26,6 @@ class HomeController extends Controller
         $this->bukuService = $bukuService;
     }
 
-    public function sentEmailRemainder(Request $request)
-    {
-        $member = $this->memberService->findById($request->member_id);
-        $peminjaman = $this->peminjamanBukuService->findById($request->peminjaman_id);
-        $judulBuku = $peminjaman->eksemplar->buku->buku_judul;
-        $this->memberService->sendEmail($member->member_email, $member->member_nama, '-', $judulBuku, 'register');
-        $peminjaman->peminjaman_email_sent = 1;
-        $peminjaman->save();
-
-        return redirect()->back()->with('success', 'Email Pengingat Pengembalian Buku.');
-    }
-
     public function index()
     {
         if (!Auth::check()) {

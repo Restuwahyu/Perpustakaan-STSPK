@@ -348,6 +348,18 @@ class MemberController extends Controller
         }
     }
 
+    public function sentEmailRemainder(Request $request)
+    {
+        $member = $this->memberService->findById($request->member_id);
+        $peminjaman = $this->peminjamanBukuService->findById($request->peminjaman_id);
+        $judulBuku = $peminjaman->eksemplar->buku->buku_judul;
+        $this->memberService->sendEmail($member->member_email, $member->member_nama, '-', $judulBuku, 'reminder');
+        $peminjaman->peminjaman_email_sent = 1;
+        $peminjaman->save();
+
+        return redirect()->route('home')->with('success', 'Email Pengingat Pengembalian Buku.');
+    }
+
     // Proses Ganti Password Forgot Password Member
     public function forgotPasswordMember(Request $request)
     {
