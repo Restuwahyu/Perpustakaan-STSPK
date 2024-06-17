@@ -364,9 +364,11 @@ class MemberController extends Controller
     // Proses Ganti Password Forgot Password Member
     public function forgotPasswordMember(Request $request)
     {
+        // dd($request->all());
         $member_email = $request->input('member_email');
         $member = $this->memberService->findMemberByEmail($member_email);
 
+        $member = $this->memberService->findById($request->member_id);
         if (!$member) {
             return redirect()->route('forgot')->with('error', 'Email tidak ditemukan.');
         }
