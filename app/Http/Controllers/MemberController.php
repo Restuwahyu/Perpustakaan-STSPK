@@ -350,11 +350,11 @@ class MemberController extends Controller
 
     public function sentEmailRemainder(Request $request)
     {
-        $member = $this->memberService->findById($request->member_id);
+        $member_id = $request->input('member_id');
+        $member = $this->memberService->findById($member_id);
         $peminjaman = $this->peminjamanBukuService->findById($request->peminjaman_id);
         $judulBuku = $peminjaman->eksemplar->buku->buku_judul;
-        // $this->memberService->sendEmail($member->member_email, $member->member_nama, '-', $judulBuku, 'reminder');
-        $this->memberService->sendEmail($member->member_email, $member->member_nama, '-', $judulBuku, 'reset_password');
+        $this->memberService->sendEmail($member->member_email, $member->member_nama, '-', $judulBuku, 'reminder');
         $peminjaman->peminjaman_email_sent = 1;
         $peminjaman->save();
 
@@ -364,11 +364,9 @@ class MemberController extends Controller
     // Proses Ganti Password Forgot Password Member
     public function forgotPasswordMember(Request $request)
     {
-        // dd($request->all());
         $member_email = $request->input('member_email');
         $member = $this->memberService->findMemberByEmail($member_email);
 
-        $member = $this->memberService->findById($request->member_id);
         if (!$member) {
             return redirect()->route('forgot')->with('error', 'Email tidak ditemukan.');
         }

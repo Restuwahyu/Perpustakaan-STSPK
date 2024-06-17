@@ -352,7 +352,7 @@
                                         <td>
                                             <div class="d-flex justify-content-center">
                                                 @if (isset($buku->daysRemaining) && $buku->daysRemaining <= 1)
-                                                    <form action="{{ route('forgot') }}" method="POST">
+                                                    <form action="{{ route('sentEmailRemainder') }}" method="POST">
                                                         @csrf
                                                         @method('POST')
                                                         <button class="btn btn-sm detail-button btn-warning mr-2">

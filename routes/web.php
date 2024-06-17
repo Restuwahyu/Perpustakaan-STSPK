@@ -59,7 +59,7 @@ Route::post('/forgot-password', [MemberController::class, 'forgotPasswordMember'
 Route::put('/reset-password', [MemberController::class, 'gantiPasswordMember'])->name('ganti_password_member');
 Route::put('/ganti-passwords', [AuthController::class, 'gantiPassword'])->name('gantiPasswords');
 
-Route::post('/email_remainder', [MemberController::class, 'sentEmailRemainder'])->name('sentEmailRemainder');
+Route::post('/email-remainder', [MemberController::class, 'sentEmailRemainder'])->name('sentEmailRemainder');
 
 Route::middleware(['memberSession'])->group(function () {
     // Route Dashboard Member
