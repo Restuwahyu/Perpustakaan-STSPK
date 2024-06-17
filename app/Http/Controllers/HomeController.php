@@ -33,7 +33,8 @@ class HomeController extends Controller
         }
         $member = $this->memberService->findById($request->member_id);
         $peminjaman = $this->peminjamanBukuService->findById($request->peminjaman_id);
-        $this->memberService->sendEmail($member->member_email, $member->member_nama, '-', $peminjaman, 'reminder');
+        $judulBuku = $peminjaman->eksemplar->buku->buku_judul;
+        $this->memberService->sendEmail($member->member_email, $member->member_nama, '-', $judulBuku, 'reminder');
         $peminjaman->peminjaman_email_sent = 1;
         $peminjaman->save();
 
@@ -74,7 +75,7 @@ class HomeController extends Controller
 
             return $daysRemaining <= 7 && $peminjaman->peminjaman_status == 1;
         });
-        dd($pengembalian_buku);
+        // dd($pengembalian_buku);
 
         $totalPeminjaman = $peminjamans->count();
 

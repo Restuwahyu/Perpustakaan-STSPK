@@ -12,14 +12,14 @@ class VerificationEmail extends Mailable
 
     public $namaMember;
     public $verificationToken;
-    public $peminjaman;
+    public $judulBuku;
     public $type;
 
-    public function __construct($namaMember, $verificationToken, $peminjaman, $type)
+    public function __construct($namaMember, $verificationToken, $judulBuku, $type)
     {
         $this->namaMember = $namaMember;
         $this->verificationToken = $verificationToken;
-        $this->peminjaman = $peminjaman;
+        $this->judulBuku = $judulBuku;
         $this->type = $type;
     }
 

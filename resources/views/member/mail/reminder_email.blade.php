@@ -84,12 +84,12 @@
 
         <div class="card">
             <p>Halo Kak {{ $namaMember }},</p>
-            {{-- <p>Buku "{{ $peminjaman->eksemplar->buku->buku_judul }}" yang Anda pinjam telah habis peminjamannya hari
-                ini.
-            </p> --}}
-            <p>Buku yang Anda pinjam telah habis peminjamannya hari
+            <p>Buku "{{ $judulBuku }}" yang Anda pinjam telah habis peminjamannya hari
                 ini.
             </p>
+            {{-- <p>Buku yang Anda pinjam telah habis peminjamannya hari
+                ini.
+            </p> --}}
             <p>Silakan segera mengembalikan buku karena masa peminjaman buku telah habis.</p>
         </div>
     </div>

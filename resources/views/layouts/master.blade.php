@@ -321,8 +321,7 @@
                                     <tr>
                                         <td style="cursor: pointer" data-toggle="modal"
                                             data-target="#memberModal{{ $buku->member->member_id }}">
-                                            {{-- {{ $buku->member->member_nama }} --}}
-                                            {{ $buku->daysRemaining }}
+                                            {{ $buku->member->member_nama }}
                                         </td>
                                         <td style="cursor: pointer" data-toggle="modal"
                                             data-target="#memberModal{{ $buku->member->member_id }}">
@@ -352,7 +351,7 @@
                                         </td>
                                         <td>
                                             <div class="d-flex justify-content-center">
-                                                @if ($buku->daysRemaining <= 1)
+                                                @if (isset($buku->daysRemaining) && $buku->daysRemaining <= 1)
                                                     <form action="{{ route('sentEmailRemainder') }}" method="POST">
                                                         @csrf
                                                         <button class="btn btn-sm detail-button btn-warning mr-2">
