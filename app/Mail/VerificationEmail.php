@@ -17,6 +17,7 @@ class VerificationEmail extends Mailable
 
     public function __construct($namaMember, $verificationToken, $judulBuku, $type)
     {
+        dd($namaMember, $verificationToken, $judulBuku, $type);
         $this->namaMember = $namaMember;
         $this->verificationToken = $verificationToken;
         $this->judulBuku = $judulBuku;
@@ -32,8 +33,10 @@ class VerificationEmail extends Mailable
             return $this->view('member.mail.verification_email')
                 ->subject('Verifikasi Email');
         } elseif ($this->type === 'reminder') {
-            return $this->view('member.mail.reminder_email')
-                ->subject('Pengembalian Buku');
+            return $this->view('member.mail.verification_email')
+                ->subject('Verifikasi Email');
+            // return $this->view('member.mail.reminder_email')
+            //     ->subject('Pengembalian Buku');
         }
     }
 }
