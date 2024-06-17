@@ -197,6 +197,7 @@ class MemberService implements PerpustakaanInterface
         } elseif ($type === 'reset_password') {
             Mail::to($to)->send(new VerificationEmail($name, $verificationToken, $peminjaman, 'reset_password'));
         } elseif ($type === 'reminder') {
+            dd(3);
             Mail::to($to)->send(new VerificationEmail($name, $verificationToken, $peminjaman, 'reminder'));
         }
     }
