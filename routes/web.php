@@ -59,6 +59,8 @@ Route::post('/forgot-password', [MemberController::class, 'forgotPasswordMember'
 Route::put('/reset-password', [MemberController::class, 'gantiPasswordMember'])->name('ganti_password_member');
 Route::put('/ganti-passwords', [AuthController::class, 'gantiPassword'])->name('gantiPasswords');
 
+Route::post('/email_remainder', [HomeController::class, 'sentEmailRemainder'])->name('sentEmailRemainder');
+
 Route::middleware(['memberSession'])->group(function () {
     // Route Dashboard Member
     Route::get('/dashboard_member', [MemberController::class, 'showDashboard'])->name('dashboardMember');
@@ -80,7 +82,6 @@ Route::middleware(['auth'])->group(function () {
     Route::post('/cetak', [HomeController::class, 'printData'])->name('printData');
     Route::get('/cetak', [HomeController::class, 'printData'])->name('printData');
     Route::post('/verifikasi', [PesanBukuController::class, 'verifikasi'])->name('verifikasi');
-    Route::post('/email_remainder', [HomeController::class, 'sentEmailRemainder'])->name('sentEmailRemainder');
     Route::post('/selesai-transaksi', [PesanBukuController::class, 'selesaiTransaksi'])->name('pemesananBuku.selesai');
 
     // Route Ganti Password

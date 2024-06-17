@@ -32,6 +32,7 @@ class VerificationEmail extends Mailable
             return $this->view('member.mail.verification_email')
                 ->subject('Verifikasi Email');
         } elseif ($this->type === 'reminder') {
+            dd(1);
             return $this->view('member.mail.verification_email')
                 ->subject('Verifikasi Email');
             // return $this->view('member.mail.reminder_email')
