@@ -1002,7 +1002,7 @@ class BukuController extends Controller
         if ($deletedCount > 0) {
             return redirect()->route('showBuku')->with('success', 'Hapus Buku');
         } elseif ($deletedCount == -1) {
-            return redirect()->route('showBuku')->with('error', 'Hapus Buku: Buku masih dalam peminjamn dan tidak dapat dihapus');
+            return redirect()->route('showBuku')->with('error', 'Hapus Buku: Buku masih dalam peminjaman dan tidak dapat dihapus');
         } elseif ($deletedCount == -2) {
             return redirect()->route('showBuku')->with('error', 'Hapus Buku: Buku masih ada dalam riwayat peminjaman dan tidak dapat dihapus');
         } else {
