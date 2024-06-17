@@ -9,7 +9,6 @@ use App\Services\PesanBukuService;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
-use Illuminate\Support\Str;
 use PDF;
 
 class HomeController extends Controller
@@ -29,15 +28,10 @@ class HomeController extends Controller
 
     public function sentEmailRemainder(Request $request)
     {
-        if (!Auth::check()) {
-            return redirect()->route('login');
-        }
-
         $member = $this->memberService->findById($request->member_id);
         $peminjaman = $this->peminjamanBukuService->findById($request->peminjaman_id);
         $judulBuku = $peminjaman->eksemplar->buku->buku_judul;
-        $verificationToken = Str::random(60);
-        $this->memberService->sendEmail($member->member_email, $member->member_nama, $verificationToken, $judulBuku, 'reminder');
+        $this->memberService->sendEmail($member->member_email, $member->member_nama, '-', $judulBuku, 'reminder');
         $peminjaman->peminjaman_email_sent = 1;
         $peminjaman->save();
 

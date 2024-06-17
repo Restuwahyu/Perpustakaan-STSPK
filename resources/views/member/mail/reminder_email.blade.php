@@ -87,9 +87,6 @@
             <p>Buku "{{ $judulBuku }}" yang Anda pinjam telah habis peminjamannya hari
                 ini.
             </p>
-            {{-- <p>Buku yang Anda pinjam telah habis peminjamannya hari
-                ini.
-            </p> --}}
             <p>Silakan segera mengembalikan buku karena masa peminjaman buku telah habis.</p>
         </div>
     </div>
