@@ -74,7 +74,7 @@ class HomeController extends Controller
 
             return $daysRemaining <= 7 && $peminjaman->peminjaman_status == 1;
         });
-        // dd($pengembalian_buku);
+        dd($pengembalian_buku);
 
         $totalPeminjaman = $peminjamans->count();
 
