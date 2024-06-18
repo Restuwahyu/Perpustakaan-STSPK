@@ -1,7 +1,5 @@
 @include('list_buku.header')
 
-<!--<main>
--->
 <section class="mt-5 mb-5 container">
     <div class="row">
         <div class="col-md-12">
@@ -73,34 +71,6 @@
     </div>
 
     @if ($paginatedBukus->total() > 0)
-        {{-- <div class="row">
-            <div class="col-md-12">
-                <div class="pagination-container">
-                    <div class="pg-info">
-                        Menampilkan <b>{{ $bukus->firstItem() }}-{{ $bukus->lastItem() }}</b> dari
-                        <b>{{ $paginatedBukus->total() }}</b> buku
-                    </div>
-                    <div class="pg-button">
-                        @if ($bukus->onFirstPage())
-                            <button disabled><i class="ion-ios-arrow-back"></i></button>
-                        @else
-                            <a href="{{ $bukus->previousPageUrl() }}" class="btn"><i
-                                    class="ion-ios-arrow-back"></i></a>
-                        @endif
-
-                        <span>{{ $bukus->currentPage() }} / {{ $bukus->lastPage() }}</span>
-
-                        @if ($bukus->hasMorePages())
-                            <a href="{{ $bukus->nextPageUrl() }}" class="btn">
-                                <i class="ion-ios-arrow-forward"></i>
-                            </a>
-                        @else
-                            <button disabled><i class="ion-ios-arrow-forward"></i></button>
-                        @endif
-                    </div>
-                </div>
-            </div>
-        </div> --}}
         <div class="pagination-container">
             <div class="pg-info mt-3">Menampilkan <b>{{ $bukus->firstItem() }}-{{ $bukus->lastItem() }}</b> dari
                 <b>{{ $paginatedBukus->total() }}</b> buku
@@ -126,32 +96,6 @@
     @endif
 </section>
 <hr>
-<!--</main>-->
-{{-- <script>
-    const cards = document.querySelectorAll('.card');
-
-    cards.forEach(card => {
-        card.addEventListener('click', function() {
-            const modalWrapper = this.closest('.modal-wrapper');
-            modalWrapper.classList.add('modal-active');
-        });
-    });
-
-    // Close button functionality (assuming you have a close button with id 'closeButton')
-    const closeButton = document.getElementById('closeButton');
-    closeButton.addEventListener('click', function() {
-        const modalWrapper = this.closest('.modal-wrapper');
-        modalWrapper.classList.remove('modal-active');
-    });
-
-    // Click outside to close (add event listener to document or modal-wrapper)
-    document.addEventListener('click', function(event) {
-        const modalWrapper = document.querySelector('.modal-wrapper.modal-active');
-        if (modalWrapper && !modalWrapper.contains(event.target)) {
-            modalWrapper.classList.remove('modal-active');
-        }
-    });
-</script> --}}
 <script src="{{ asset('storage/script.js') }}"></script>
 
 @include('list_buku.footer')

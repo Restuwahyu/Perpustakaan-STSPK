@@ -1,6 +1,5 @@
 @include('list_buku.header')
 
-<!--<main>-->
 <section class="container mt-8">
     <div class="card mt-5 mb-5 p-4">
         <div class="row">
@@ -44,7 +43,6 @@
                 </div>
             </div>
         </div>
-
 
         <hr class="mt-4 mb-2">
 
@@ -211,14 +209,6 @@
 <hr>
 
 <script>
-    $(document).ready(function() {
-        $('#submitForm-{{ $eksemplar->eksemplar_id }}').on('submit', function(event) {
-            console.log('Form submitted'); // Debugging
-
-
-        });
-    });
-
     document.getElementById("pesanBukuBtn").addEventListener("click", function() {
         event.preventDefault();
 

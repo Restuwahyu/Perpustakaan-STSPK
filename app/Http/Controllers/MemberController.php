@@ -309,7 +309,6 @@ class MemberController extends Controller
     // Proses Ganti Password Member
     public function gantiPasswordMember(Request $request)
     {
-        // dd($request->all());
         $member_id = $request->input('id_member_reset');
         $type = $request->input('type');
         $member = $this->memberService->findById($member_id);
@@ -333,7 +332,6 @@ class MemberController extends Controller
             return redirect()->route('showGantiPasswordMember')->with('error', 'Password Baru dan Konfirmasi Berbeda');
         }
 
-        // dd($member);
         $member->member_password = Hash::make($request->input('new_password'));
         $member->updated_at = now();
         $member->member_token = null;
