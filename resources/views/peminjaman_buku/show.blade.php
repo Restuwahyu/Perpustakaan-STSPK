@@ -48,7 +48,7 @@
                                 </div>
                                 <div class="col-6 col-md-5">
                                     <input type="text" class="form-control" id="member_kode" name="member_kode"
-                                        placeholder="Masukkan ID Anggota" autofocus required>
+                                        placeholder="Masukkan ID Member" autofocus required>
                                     @error('member_kode')
                                         <span class="text-danger">{{ $message }}</span>
                                     @enderror

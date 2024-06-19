@@ -78,7 +78,6 @@ class MemberController extends Controller
             }
         }
 
-        // dd($riwayatBukus);
         foreach ($riwayatBukus as $peminjamanBuku) {
             if ($peminjamanBuku->peminjaman_status == 1) {
                 $bukuDipinjam += 1;
