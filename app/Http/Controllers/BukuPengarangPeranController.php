@@ -43,7 +43,6 @@ class BukuPengarangPeranController extends Controller
             return redirect()->route('login');
         }
 
-        // dd($request->all());
         $pengarang_id = $request->input('pengarang_id');
         $pengarang = $this->pengarangService->findById($pengarang_id);
         $datas = $this->bukuPengarangPeranService->findByPengarangId($pengarang_id);
