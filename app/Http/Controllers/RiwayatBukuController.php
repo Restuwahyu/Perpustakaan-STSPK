@@ -28,7 +28,7 @@ class RiwayatBukuController extends Controller
         }
 
         $riwayatBukus = $this->peminjamanBukuService->findAll('updated_at', 'ASC');
-        // dd($riwayatBukus);
+
         return view('riwayat_buku.show', compact('riwayatBukus'));
     }
 
@@ -43,7 +43,6 @@ class RiwayatBukuController extends Controller
             $riwayatBukus = session('riwayatBukus');
             return view('pengembalian_buku.show', compact('riwayatBukus'));
         }
-        // dd($riwayatBukus);
 
         return view('pengembalian_buku.show');
 

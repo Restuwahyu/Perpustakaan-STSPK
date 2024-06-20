@@ -53,7 +53,7 @@ class PeminjamanBukuController extends Controller
         }
 
         $member = Session::get('memberPeminjaman');
-        // dd($member);
+
         if (!$member) {
             Session::forget('memberPeminjaman');
             return redirect()->route('showPinjamBuku')->with('error', 'Member Tidak Ditemukan');
@@ -65,7 +65,7 @@ class PeminjamanBukuController extends Controller
         if (collect($loanBooksTemp)->contains('peminjaman_eksemplar', null)) {
             $loanBooksTemp = Session::forget('loanBooksTemp');
         }
-        // dd($member);
+
         return view('peminjaman_buku.tambah', compact('member', 'loanBooksTemp', 'peminjamans_id', 'peminjamans_riwayat'));
     }
 
@@ -118,7 +118,7 @@ class PeminjamanBukuController extends Controller
         $eksemplar->save();
 
         $loanBooksTemp = session('loanBooksTemp', []);
-        // dd($loanBooksTemp);
+
         if (collect($loanBooksTemp)->contains('peminjaman_eksemplar.eksemplar_kode', $eksemplar_kode)) {
             return redirect()->route('tambahPinjamBuku')->with('error', 'Buku Sudah Dimasukkan ke Daftar Peminjaman');
         }
@@ -135,7 +135,7 @@ class PeminjamanBukuController extends Controller
             'peminjaman_tgl_kembali' => Carbon::now()->addMonth(),
             'peminjaman_status' => 1,
         ];
-        // dd($newLoanBook);
+
         $loanBooksTemp[] = $newLoanBook;
 
         Session::put('loanBooksTemp', $loanBooksTemp);
@@ -156,7 +156,6 @@ class PeminjamanBukuController extends Controller
             return redirect()->route('login');
         }
 
-        // dd($request->all());
         $loanBooksTemp = Session::get('loanBooksTemp', []);
 
         foreach ($loanBooksTemp as $loanBookTemp) {
@@ -168,8 +167,6 @@ class PeminjamanBukuController extends Controller
                 'peminjaman_tgl_kembali' => $loanBookTemp['peminjaman_tgl_kembali'],
                 'peminjaman_status' => $loanBookTemp['peminjaman_status'],
             ];
-            // dd($data);
-
             $this->peminjamanBukuService->add($data);
 
             $eksemplar = $loanBookTemp['peminjaman_eksemplar'];
@@ -201,7 +198,6 @@ class PeminjamanBukuController extends Controller
         $loanBooksTemp = Session::get('loanBooksTemp', []);
         $indexToDelete = array_search($peminjaman_id, array_column($loanBooksTemp, 'id'));
 
-        // dd($loanBooksTemp);
         if ($indexToDelete !== false) {
             $eksemplar = $loanBooksTemp[$indexToDelete]['peminjaman_eksemplar'];
             $eksemplar->eksemplar_status = 1;

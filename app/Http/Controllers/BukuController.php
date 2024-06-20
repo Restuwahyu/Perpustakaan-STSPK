@@ -73,7 +73,7 @@ class BukuController extends Controller
         $searchTerm = request()->get('search')['value'];
 
         $query = $this->bukuService->findBukus($searchTerm)->orderby('updated_at', 'desc');
-        // dd($query);
+
         return DataTables::of($query)->make(true);
     }
 
