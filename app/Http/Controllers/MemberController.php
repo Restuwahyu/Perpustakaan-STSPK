@@ -3,7 +3,6 @@
 namespace App\Http\Controllers;
 
 use App\Http\Controllers\Controller;
-use App\Mail\VerificationEmail;
 use App\Services\BukuService;
 use App\Services\MemberService;
 use App\Services\PeminjamanBukuService;
@@ -12,7 +11,6 @@ use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
-use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\Str;
 use Illuminate\Validation\Rule;
@@ -353,8 +351,8 @@ class MemberController extends Controller
         $member = $this->memberService->findById($member_id);
         $peminjaman = $this->peminjamanBukuService->findById($request->peminjaman_id);
         $judulBuku = $peminjaman->eksemplar->buku->buku_judul;
-        Mail::to($member->member_email)->send(new VerificationEmail($member->member_nama, '-', $judulBuku, 'reminder'));
-        // $this->memberService->sendEmail($member->member_email, $member->member_nama, '-', $judulBuku, 'reminder');
+        // Mail::to($member->member_email)->send(new VerificationEmail($member->member_nama, '-', $judulBuku, 'reminder'));
+        $this->memberService->sendEmail($member->member_email, $member->member_nama, '-', $judulBuku, 'reminder');
         $peminjaman->peminjaman_email_sent = 1;
         $peminjaman->save();
 
