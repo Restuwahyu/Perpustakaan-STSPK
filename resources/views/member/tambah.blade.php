@@ -171,13 +171,19 @@
 <script>
     // Menghilangkan Simbol Otomatis pada Inputan Nomor Telepon
     document.addEventListener('DOMContentLoaded', function() {
-        var notelpInput = document.getElementById("notelp");
+        const phoneInput = document.getElementById('notelp');
 
-        notelpInput.addEventListener("input", function() {
-            var cleanedValue = this.value.replace(/\D/g, "");
-            this.value = cleanedValue;
+        phoneInput.addEventListener('input', function() {
+            let value = phoneInput.value;
+
+            if (value.startsWith('+62')) {
+                value = '0' + value.slice(3);
+            }
+
+            value = value.replace(/\D/g, '');
+
+            phoneInput.value = value;
         });
     });
 </script>
-
 @include('layouts.footer')

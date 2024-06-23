@@ -136,7 +136,7 @@ class MemberController extends Controller
         $rules = [
             'member_nama' => 'required',
             'member_alamat' => 'required',
-            'member_notelp' => 'required|min:10|max:13',
+            'member_notelp' => 'required|min:10|max:13|regex:/^08\d*$/',
             'member_tanggal_lahir' => 'required',
             'member_password' => 'min:8',
             'confirmation_password' => 'min:8',
@@ -159,6 +159,7 @@ class MemberController extends Controller
             'member_notelp.required' => 'Nomor Telepon Harus Diisi',
             'member_notelp.min' => 'Nomor Telepon Minimal 10 Digit',
             'member_notelp.max' => 'Nomor Telepon Maximal 13 Digit',
+            'member_notelp.regex' => 'Nomor Telepon Harus Diawali +62 atau 08',
             'member_password.min' => 'Password Minimal 8 Karakter',
             'confirmation_password.min' => 'Password Minimal 8 Karakter',
         ];

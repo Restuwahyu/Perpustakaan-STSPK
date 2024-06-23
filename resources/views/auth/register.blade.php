@@ -227,6 +227,23 @@
             }
         });
     });
+
+    // Menghilangkan Simbol Otomatis pada Inputan Nomor Telepon
+    document.addEventListener('DOMContentLoaded', function() {
+        const phoneInput = document.getElementById('notelp');
+
+        phoneInput.addEventListener('input', function() {
+            let value = phoneInput.value;
+
+            if (value.startsWith('+62')) {
+                value = '0' + value.slice(3);
+            }
+
+            value = value.replace(/\D/g, '');
+
+            phoneInput.value = value;
+        });
+    });
 </script>
 
 </body>
