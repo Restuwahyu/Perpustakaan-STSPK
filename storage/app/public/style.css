@@ -286,5 +286,16 @@ letter-group {
 }
 
 .footer-info p {
-    margin: 5px 0;
+    margin: 15px 0;
+}
+
+.footer-info {
+    margin: 0 60px;
+}
+
+.footer-logo {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
 }
