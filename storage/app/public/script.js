@@ -63,36 +63,3 @@ var botmanWidget = {
     introMessage:
         "Halo! Saya adalah chatbot perpustakaan. Ada yang bisa saya bantu?",
 };
-
-// const swalWithBootstrapButtons = Swal.mixin({
-//     customClass: {
-//         confirmButton: "btn btn-success mr-2",
-//         cancelButton: "btn btn-danger",
-//     },
-//     buttonsStyling: false,
-// });
-
-// document.getElementById("pesanBukuBtn").addEventListener("click", function () {
-//     if (checkMemberSession()) {
-//         window.location.href = "/dashboard_member";
-//     } else {
-//         swalWithBootstrapButtons
-//             .fire({
-//                 title: "Peringatan!",
-//                 text: "Anda harus login terlebih dahulu untuk melakukan pemesanan buku.",
-//                 icon: "warning",
-//                 showCancelButton: true,
-//                 confirmButtonText: "Login",
-//                 cancelButtonText: "Batal",
-//             })
-//             .then((result) => {
-//                 if (result.value) {
-//                     window.location.href = "/login";
-//                 }
-//             });
-//     }
-// });
-
-// function checkMemberSession() {
-//     return sessionStorage.getItem("member") != null;
-// }

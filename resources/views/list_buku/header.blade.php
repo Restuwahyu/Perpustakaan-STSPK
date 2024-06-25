@@ -69,9 +69,10 @@
                                         <i class="far fa-times-circle float-right text-danger cursor-pointer"></i>
                                     </p>
                                     <div class="d-flex flex-wrap">
-                                        <a data-toggle="modal" data-target="#adv-modal"
-                                            class="btn btn-outline-primary mr-2 mb-2">Pencarian
-                                            Spesifik</a>
+                                        <a data-toggle="modal" data-target="#advanced-modal"
+                                            class="btn btn-outline-primary mr-2 mb-2">
+                                            Pencarian Spesifik
+                                        </a>
                                     </div>
                                 </div>
                             </div>
@@ -98,13 +99,12 @@
         </nav>
 
         <!-- Modal Pencarian Spesifik -->
-        <div class="modal fade" id="adv-modal" tabindex="-1" role="dialog" aria-labelledby="adv-modal-label"
+        <div class="modal fade" id="advanced-modal" tabindex="-1" role="dialog" aria-labelledby="advanced-modal-label"
             aria-hidden="true">
             <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
                 <div class="modal-content">
                     <div class="modal-header">
-                        <h5 class="modal-title" id="adv-modal-label">Pencarian
-                            Spesifik</h5>
+                        <h5 class="modal-title" id="advanced-modal-label">Pencarian Spesifik</h5>
                         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                             <span aria-hidden="true">&times;</span>
                         </button>

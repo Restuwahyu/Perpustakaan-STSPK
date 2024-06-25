@@ -128,10 +128,5 @@
         </div>
     </div>
 </section>
-<hr>
-
-{{-- <section>
-    <div id="chatbot"></div>
-</section> --}}
 
 @include('list_buku.footer')
