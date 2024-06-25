@@ -284,3 +284,7 @@ letter-group {
     color: white;
     text-decoration: none;
 }
+
+.footer-info p {
+    margin: 5px 0;
+}
