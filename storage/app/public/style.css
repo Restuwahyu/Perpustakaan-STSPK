@@ -80,7 +80,7 @@ dt {
 
 .pg-button .btn:hover,
 .pg-button button:hover {
-    background: #343a40;
+    background: #242d3e;
 }
 
 .pg-button button[disabled] {
@@ -126,7 +126,7 @@ main {
     .bottom-footer {
         bottom: 0;
         width: 100%;
-        background-color: #343a40;
+        background-color: #242d3e;
         color: white;
         text-align: center;
         padding: 10px;
@@ -145,7 +145,7 @@ main {
         position: absolute;
         bottom: 0;
         width: 100%;
-        background-color: #343a40;
+        background-color: #242d3e;
         color: white;
         text-align: center;
         padding: 10px;
@@ -189,7 +189,7 @@ main {
         position: absolute;
         bottom: 0;
         width: 100%;
-        background-color: #343a40;
+        background-color: #242d3e;
         color: white;
         text-align: center;
         padding: 10px;
@@ -201,7 +201,7 @@ main {
     position: absolute;
     bottom: 0;
     width: 100%;
-    background-color: #343a40;
+    background-color: #242d3e;
     color: white;
     text-align: center;
     padding: 10px;
