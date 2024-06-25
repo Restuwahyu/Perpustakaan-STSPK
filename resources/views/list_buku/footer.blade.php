@@ -34,10 +34,10 @@
             </div>
         </div>
     </div>
+</footer>
 
-    <div class="bottom-footer">
-        <span id="year"></span> © Seminari Tinggi St. Paulus Kentungan <span class="d-none d-sm-inline-block">
-    </div>
+<footer class="bottom-footer">
+    <span id="year"></span> © Seminari Tinggi St. Paulus Kentungan <span class="d-none d-sm-inline-block">
 </footer>
 
 <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>

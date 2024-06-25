@@ -23,7 +23,7 @@ document
     .getElementById("search-input")
     .addEventListener("keyup", function (event) {
         if (event.key === "Enter") {
-            event.preventDefault(); // Mencegah pengiriman standar formulir
+            event.preventDefault();
             document.getElementById("search-form").submit();
         }
     });
@@ -41,15 +41,13 @@ $(document).ready(function () {
         var target = $(this).data("target");
         $("#" + target).toggle();
 
-        // Hide other letter groups
         $(".letter-group")
             .not("#" + target)
             .hide();
 
-        // Scroll to the bottom of the page
         $("html, body").animate({ scrollTop: $(document).height() }, "slow");
 
-        return false; // Prevent default link behavior
+        return false;
     });
 });
 
