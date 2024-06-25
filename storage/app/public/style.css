@@ -57,7 +57,7 @@ dt {
 
 .pg-button .btn {
     margin: 0 5px;
-    background: #6c757d;
+    background: #242d3e;
     color: #fff;
     padding: 5px 10px;
     border: none;
@@ -69,7 +69,7 @@ dt {
 
 .pg-button button {
     margin: 0 5px;
-    background: #6c757d;
+    background: #242d3e;
     color: #fff;
     padding: 5px 10px;
     border: none;
@@ -80,7 +80,7 @@ dt {
 
 .pg-button .btn:hover,
 .pg-button button:hover {
-    background: #242d3e;
+    background: #19202c;
 }
 
 .pg-button button[disabled] {

@@ -206,8 +206,6 @@
     </div>
 </section>
 
-<hr>
-
 <script>
     document.getElementById("pesanBukuBtn").addEventListener("click", function() {
         event.preventDefault();

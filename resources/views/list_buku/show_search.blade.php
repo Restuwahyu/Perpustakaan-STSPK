@@ -95,7 +95,7 @@
         </div>
     @endif
 </section>
-<hr>
+
 <script src="{{ asset('storage/script.js') }}"></script>
 
 @include('list_buku.footer')
