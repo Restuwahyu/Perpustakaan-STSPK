@@ -29,7 +29,7 @@
                 </p>
                 <h5 class="mb-1" style="letter-spacing: 2px;">Jam Operasional</h5>
                 <p>
-                    Senin - Jumat : 08.00 - 11.00 WIB
+                    Senin - Jumat : 08.00 - 16.00 WIB
                 </p>
             </div>
         </div>

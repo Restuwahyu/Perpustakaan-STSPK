@@ -22,7 +22,7 @@
 
 <!-- Footer -->
 <footer class="footer">
-    2023 © Seminari Tinggi St. Paulus Kentungan
+    <span id="year"></span> © Seminari Tinggi St. Paulus Kentungan
 </footer>
 <!-- End Footer -->
 
@@ -74,6 +74,8 @@
 <!---->
 
 <script>
+    document.getElementById('year').textContent = new Date().getFullYear();
+
     $(".alert").delay(5000).fadeOut(400);
 
     $(document).ready(function() {
